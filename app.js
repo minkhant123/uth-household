@@ -396,10 +396,10 @@ function handleQuickReply(sender_psid, received_message) {
         case "on":
             showQuickReplyOn(sender_psid);
           break;
-        case "off":w
+        case "off":
             showQuickReplyOff(sender_psid);
           break;   
-        case "confirm-productorder":
+        case "confirm":
             saveProductOrder(userInputs[user_id], sender_psid);
           break;             
         default:
@@ -442,7 +442,7 @@ const handleMessage = (sender_psid, received_message) => {
     userInputs[user_id].message=received_message.text;
     current_question='';
 
-    confirmAppointment(sender_psid);
+    confirmOrder(sender_psid);
   }
 
   else {
@@ -530,7 +530,7 @@ const handlePostback = (sender_psid, received_postback) => {
   console.log('BUTTON PAYLOAD', payload);
   
   if(payload.startsWith("Product:")){
-    let product_type=payload.slice(5);
+    let product_type=payload.slice(8);
     console.log("SELECTED PRODUCT IS: ", product_type);
     userInputs[user_id].product=product_type;
     console.log('TEST',userInputs);
@@ -630,7 +630,7 @@ start product
 const order =(sender_psid) => {
   let response1 = {"text": "Welcome to UTH Shop"};
   let response2 = {
-    "text": "Please Tools or Chemicals",
+    "text": "Please Choose Tools or Chemicals?",
     "quick_replies":[
             {
               "content_type":"text",
@@ -722,7 +722,7 @@ const botQuestions = (current_question,sender_psid) => {
 
 }
 
-const confirmAppointment = (sender_psid) => {
+const confirmOrder = (sender_psid) => {
   console.log('ORDER INFO',userInputs);
    let Summary = "order:" + userInputs[user_id].order + "\u000A";
    Summary += "product:" + userInputs[user_id].product + "\u000A";
@@ -741,7 +741,7 @@ const confirmAppointment = (sender_psid) => {
             {
               "content_type":"text",
               "title":"Confirm",
-              "payload":"confirm-productorder",              
+              "payload":"Confirm",              
             },{
               "content_type":"text",
               "title":"Cancel",
