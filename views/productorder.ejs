@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Product Orders</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<h1>Product Orders</h1>
+
+	<table cellspacing="1" cellpadding="5" border="1">
+		<tr>
+			<th>Name</th>
+			<th>Phone</th>
+			<th>Email</th>
+			<th>Order Type</th>
+			<th>Product</th>
+			<th>Date</th>
+			<th>Visit</th>
+			<th>Message</th>
+			<th>Reference</th>
+			<th>Status</th>
+			<th>Action</th>
+		</tr>
+
+	<% data.forEach(function(productorder){ %>
+		<tr>
+			<td><%= productorder.name %></td>
+			<td><%= productorder.phone %></td>
+			<td><%= productorder.email %></td>
+			<td><%= productorder.order %></td>
+			<td><%= productorder.room %></td>
+			<td><%= productorder.date %></td>
+			<td><%= productorder.visit %></td>
+			<td><%= productorder.message %></td>
+			<td><%= productorder.ref %></td>
+			<td><%= productorder.status %></td>
+			<td><a href="updateproductorder/<%= productorder.doc_id %>">Edit</a>  | <a href="">Delete</a> </td>
+		</tr>
+	<% }); %>
+
+	</table>
+
+</body>
+</html>

@@ -530,9 +530,9 @@ const handlePostback = (sender_psid, received_postback) => {
   console.log('BUTTON PAYLOAD', payload);
   
   if(payload.startsWith("Product:")){
-    let room_type=payload.slice(5);
-    console.log("SELECTED PRODUCT IS: ", room_type);
-    userInputs[user_id].room=room_type;
+    let product_type=payload.slice(5);
+    console.log("SELECTED PRODUCT IS: ", product_type);
+    userInputs[user_id].room=product_type;
     console.log('TEST',userInputs);
     firstOrFollowup(sender_psid);
   }
@@ -630,15 +630,15 @@ start room
 const order =(sender_psid) => {
   let response1 = {"text": "Welcome to UTH Shop"};
   let response2 = {
-    "text": "Please Construction Tools or Construction Chemicals",
+    "text": "Please Tools or Chemicals",
     "quick_replies":[
             {
               "content_type":"text",
-              "title":"Construction Tools",
+              "title":"Tools",
               "payload":"product:Product",              
             },{
               "content_type":"text",
-              "title":"Construction Chemicals",
+              "title":"Chemicals",
               "payload":"product:Chemical",             
             }
     ]
@@ -776,7 +776,7 @@ end room
 
 
 const hiReply =(sender_psid) => {
-  let response = {"text": "Hello user, you can make room booking"};
+  let response = {"text": "Hello user, you can make household product ordering"};
   callSend(sender_psid, response);
 }
 
