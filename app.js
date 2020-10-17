@@ -387,7 +387,7 @@ function handleQuickReply(sender_psid, received_message) {
     current_question='q3';
     botQuestions(current_question, sender_psid);
   }else if(received_message.startsWith("product:")){
-    let r_f=received_message.slice(9);
+    let r_f=received_message.slice(8);
     userInputs[user_id].order=r_f;
     showProduct(sender_psid);
 
@@ -532,7 +532,7 @@ const handlePostback = (sender_psid, received_postback) => {
   if(payload.startsWith("Product:")){
     let product_type=payload.slice(5);
     console.log("SELECTED PRODUCT IS: ", product_type);
-    userInputs[user_id].room=product_type;
+    userInputs[user_id].product=product_type;
     console.log('TEST',userInputs);
     firstOrFollowup(sender_psid);
   }
@@ -625,7 +625,7 @@ function webviewTest(sender_psid){
 
 
 /****************
-start room 
+start product 
 ****************/
 const order =(sender_psid) => {
   let response1 = {"text": "Welcome to UTH Shop"};
@@ -725,7 +725,7 @@ const botQuestions = (current_question,sender_psid) => {
 const confirmAppointment = (sender_psid) => {
   console.log('ORDER INFO',userInputs);
    let Summary = "order:" + userInputs[user_id].order + "\u000A";
-   Summary += "room:" + userInputs[user_id].room + "\u000A";
+   Summary += "product:" + userInputs[user_id].product + "\u000A";
    Summary += "visit:" + userInputs[user_id].visit + "\u000A";
    Summary += "name:" + userInputs[user_id].name + "\u000A";
    Summary += "phone:" + userInputs[user_id].phone + "\u000A";
@@ -771,7 +771,7 @@ const saveProductOrder = async (arg, sender_psid) =>{
     });
   }
 /****************
-end room 
+end product 
 ****************/
 
 
