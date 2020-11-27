@@ -381,12 +381,13 @@ function handleQuickReply(sender_psid, received_message) {
 
   received_message=received_message.toLowerCase();
 
-  if(received_message.startsWith("visit:")){
-    let visit=received_message.slice(6);
-    userInputs[user_id].visit=visit;
-    current_question='q3';
-    botQuestions(current_question, sender_psid);
-  }else if(received_message.startsWith("product:")){
+  // if(received_message.startsWith("visit:")){
+  //   let visit=received_message.slice(6);
+  //   userInputs[user_id].visit=visit;
+  //   current_question='q3';
+  //   botQuestions(current_question, sender_psid);
+  // }else 
+  if(received_message.startsWith("product:")){
     let r_f=received_message.slice(8);
     userInputs[user_id].order=r_f;
     showProduct(sender_psid);
@@ -534,7 +535,9 @@ const handlePostback = (sender_psid, received_postback) => {
     console.log("SELECTED PRODUCT IS: ", product_type);
     userInputs[user_id].product=product_type;
     console.log('TEST',userInputs);
-    firstOrFollowup(sender_psid);
+    current_question='q3';
+    botQuestions(current_question, sender_psid);
+    // firstOrFollowup(sender_psid);
   }
   else{
       switch(payload) {        
@@ -687,23 +690,23 @@ const showProduct =(sender_psid) => {
 
 }
 
-const firstOrFollowup =(sender_psid) => {  
-  let response = {
-    "text": "First Time Visit or Follow Up?",
-    "quick_replies":[
-            {
-              "content_type":"text",
-              "title":"First Time",
-              "payload":"visit:first time",              
-            },{
-              "content_type":"text",
-              "title":"Follow Up",
-              "payload":"visit:follow up",             
-            }
-    ]
-  };
-  callSend(sender_psid, response);
-}
+// const firstOrFollowup =(sender_psid) => {  
+//   let response = {
+//     "text": "First Time Visit or Follow Up?",
+//     "quick_replies":[
+//             {
+//               "content_type":"text",
+//               "title":"First Time",
+//               "payload":"visit:first time",              
+//             },{
+//               "content_type":"text",
+//               "title":"Follow Up",
+//               "payload":"visit:follow up",             
+//             }
+//     ]
+//   };
+//   callSend(sender_psid, response);
+// }
 
 const botQuestions = (current_question,sender_psid) => {
   if(current_question =='q3'){
@@ -726,7 +729,7 @@ const confirmOrder = (sender_psid) => {
   console.log('ORDER INFO',userInputs);
    let Summary = "order:" + userInputs[user_id].order + "\u000A";
    Summary += "product:" + userInputs[user_id].product + "\u000A";
-   Summary += "visit:" + userInputs[user_id].visit + "\u000A";
+   // Summary += "visit:" + userInputs[user_id].visit + "\u000A";
    Summary += "name:" + userInputs[user_id].name + "\u000A";
    Summary += "phone:" + userInputs[user_id].phone + "\u000A";
    Summary += "email:" + userInputs[user_id].email + "\u000A";
