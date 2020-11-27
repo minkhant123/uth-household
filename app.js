@@ -630,7 +630,7 @@ start product
 const order =(sender_psid) => {
   let response1 = {"text": "Welcome to UTH Shop"};
   let response2 = {
-    "text": "Please Choose Tools or Chemicals",
+    "text": "Choose Tools or Chemicals",
     "quick_replies":[
             {
               "content_type":"text",
