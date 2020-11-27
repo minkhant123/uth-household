@@ -183,7 +183,7 @@ app.get('/admin/updateproductorder/:doc_id', async function(req,res){
   }
 });
 
-app.post('/admin/updateproductorder/', async function(req,res){
+app.post('/admin/updateproductorder/', function(req,res){
   console.log('REQ:', req.body);
 
   // const productorderRef = db.collection('productorders').doc('DC');
