@@ -630,15 +630,15 @@ start product
 const order =(sender_psid) => {
   let response1 = {"text": "Welcome to UTH Shop"};
   let response2 = {
-    "text": "Tools or Chemicals?",
+    "text": "Please Choose Tools or Chemicals",
     "quick_replies":[
             {
               "content_type":"text",
-              "title":"Tool",
+              "title":"Tools",
               "payload":"product:Product",              
             },{
               "content_type":"text",
-              "title":"Chemical",
+              "title":"Chemicals",
               "payload":"product:Chemical",             
             }
     ]
@@ -658,7 +658,8 @@ const showProduct =(sender_psid) => {
           "elements": [{
             "title": "Agricultural Imported Tools",
             "subtitle": "Construction Hand Tools",
-            "image_url":"https://sc01.alicdn.com/kf/UTB8EvBgBNHEXKJk43Jeq6yeeXXak/926475121/UTB8EvBgBNHEXKJk43Jeq6yeeXXak.jpg",                       
+            // "image_url":"https://sc01.alicdn.com/kf/UTB8EvBgBNHEXKJk43Jeq6yeeXXak/926475121/UTB8EvBgBNHEXKJk43Jeq6yeeXXak.jpg",                       
+            "image_url":"https://www.collinsdictionary.com/images/full/lightbulb_111547856_1000.jpg",
             "buttons": [
                 {
                   "type": "postback",
