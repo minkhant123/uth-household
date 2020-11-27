@@ -634,11 +634,11 @@ const order =(sender_psid) => {
     "quick_replies":[
             {
               "content_type":"text",
-              "title":"Tools",
+              "title":"Tool",
               "payload":"product:Product",              
             },{
               "content_type":"text",
-              "title":"Chemicals",
+              "title":"Chemical",
               "payload":"product:Chemical",             
             }
     ]
