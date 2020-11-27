@@ -658,8 +658,7 @@ const showProduct =(sender_psid) => {
           "elements": [{
             "title": "Agricultural Imported Tools",
             "subtitle": "Construction Hand Tools",
-            // "image_url":"https://sc01.alicdn.com/kf/UTB8EvBgBNHEXKJk43Jeq6yeeXXak/926475121/UTB8EvBgBNHEXKJk43Jeq6yeeXXak.jpg",                       
-            "image_url":"https://www.collinsdictionary.com/images/full/lightbulb_111547856_1000.jpg",
+            "image_url":"https://sc01.alicdn.com/kf/UTB8EvBgBNHEXKJk43Jeq6yeeXXak/926475121/UTB8EvBgBNHEXKJk43Jeq6yeeXXak.jpg",                       
             "buttons": [
                 {
                   "type": "postback",
