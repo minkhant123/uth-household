@@ -143,7 +143,7 @@ app.post('/test',function(req,res){
     callSend(sender_psid, response);
 });
 
-app.get('/admin/productorders/', async function(req,res){
+app.get('/admin/productorders', async function(req,res){
   const productordersRef = db.collection('productorders');
   const snapshot = await productordersRef.get();
   if(snapshot.empty){
