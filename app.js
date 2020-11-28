@@ -147,59 +147,84 @@ app.get('/admin/productorders', async function(req,res){
   const productordersRef = db.collection('productorders');
   const snapshot = await productordersRef.get();
   if(snapshot.empty){
-    res.send('no data');
+    console.log('No matching documents.');
+    return;
   }
 
   let data = [];
 
   snapshot.forEach(doc => {
     let productorder ={};
-    productorder = doc.data();
+    productorder = doc;
     productorder.doc_id = doc.id;
 
     data.push(productorder);
     
   });
+  console.log(data);
+  res.send('done');
+  //console.log('DATA:', data);
 
-  console.log('DATA:', data);
-
-  res.render('productorders.ejs', {data:data});
+  //res.render('productorders.ejs', {data:data});
 });
 
-app.get('/admin/updateproductorder/:doc_id', async function(req,res){
-  let doc_id = req.params.doc_id;
+// app.get('/admin/productorders', async function(req,res){
+//   const productordersRef = db.collection('productorders');
+//   const snapshot = await productordersRef.get();
+//   if(snapshot.empty){
+//     res.send('no data');
+//   }
+
+//   let data = [];
+
+//   snapshot.forEach(doc => {
+//     let productorder ={};
+//     productorder = doc.data();
+//     productorder.doc_id = doc.id;
+
+//     data.push(productorder);
     
-  const productorderRef = db.collection('productorders').doc(doc_id);
-  const doc = await productorderRef.get();
-  if (!doc.exists){
-    console.log('No such document!');s
-  }else{
-    console.log('Document data:', doc.data());
-    let data = doc.data();
-    data.doc_id = doc_id;
+//   });
 
-    console.log('Document data:', data);
-    res.render('editproductorders.ejs',{data:data});
-  }
-});
+//   console.log('DATA:', data);
 
-app.post('/admin/updateproductorder/', function(req,res){
-  console.log('REQ:', req.body);
+//   res.render('productorders.ejs', {data:data});
+// });
 
-  // const productorderRef = db.collection('productorders').doc('DC');
-  // const res  = await productorderRef.update
+// app.get('/admin/updateproductorder/:doc_id', async function(req,res){
+//   let doc_id = req.params.doc_id;
     
-  res.send('ok');
-  // const productorderRef = db.collection('productorders').doc(doc_id);
-  // const doc = await productorderRef.get();
-  // if (!doc.exists){
-  //   console.log('No such document!');s
-  // }else{
-  //   console.log('Document data:', doc.data());
-  //   let data = doc.data();
-  //   res.render('editproductorders.ejs',{data:data});
-  // }
-});
+//   const productorderRef = db.collection('productorders').doc(doc_id);
+//   const doc = await productorderRef.get();
+//   if (!doc.exists){
+//     console.log('No such document!');s
+//   }else{
+//     console.log('Document data:', doc.data());
+//     let data = doc.data();
+//     data.doc_id = doc_id;
+
+//     console.log('Document data:', data);
+//     res.render('editproductorders.ejs',{data:data});
+//   }
+// });
+
+// app.post('/admin/updateproductorder/', function(req,res){
+//   console.log('REQ:', req.body);
+
+//   // const productorderRef = db.collection('productorders').doc('DC');
+//   // const res  = await productorderRef.update
+    
+//   res.send('ok');
+//   // const productorderRef = db.collection('productorders').doc(doc_id);
+//   // const doc = await productorderRef.get();
+//   // if (!doc.exists){
+//   //   console.log('No such document!');s
+//   // }else{
+//   //   console.log('Document data:', doc.data());
+//   //   let data = doc.data();
+//   //   res.render('editproductorders.ejs',{data:data});
+//   // }
+// });
 
 /*********************************************
 Gallery page
