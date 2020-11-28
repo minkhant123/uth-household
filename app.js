@@ -143,32 +143,9 @@ app.post('/test',function(req,res){
     callSend(sender_psid, response);
 });
 
-// app.get('/admin/productorders', async function(req,res){
-//   const productordersRef = db.collection('productorders');
-//   const snapshot = await productordersRef.get();
-//   if(snapshot.empty){
-//     res.send('no data');
-//   }
-
-//   let data = [];
-
-//   snapshot.forEach(doc => {
-//     let productorder ={};
-//     productorder = doc.data();
-//     productorder.doc_id = doc.id;
-
-//     data.push(productorder);
-    
-//   });
-
-//   console.log('DATA:', data);
-
-//   res.render('productorders.ejs', {data:data});
-// });
-
 app.get('/admin/productorders', async function(req,res){
-  const roombookingsRef = db.collection('productorders');
-  const snapshot = await roombookingsRef.get();
+  const productordersRef = db.collection('productorders');
+  const snapshot = await productordersRef.get();
   if(snapshot.empty){
     res.send('no data');
   }
@@ -176,16 +153,16 @@ app.get('/admin/productorders', async function(req,res){
   let data = [];
 
   snapshot.forEach(doc => {
-    let roombooking ={};
-    roombooking = doc.data();
-    roombooking.doc_id = doc.id;
+    let productorder ={};
+    productorder = doc.data();
+    productorder.doc_id = doc.id;
 
-    data.push(roombooking);
+    data.push(productorder);
     
   });
 
   console.log('DATA:', data);
-productorders
+
   res.render('productorders.ejs', {data:data});
 });
 

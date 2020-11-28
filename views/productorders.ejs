@@ -10,6 +10,7 @@
 
 	<table cellspacing="1" cellpadding="5" border="1">
 		<tr>
+			<th>Documen tID</th>
 			<th>Name</th>
 			<th>Phone</th>
 			<th>Email</th>
@@ -25,6 +26,7 @@
 
 	<% data.forEach(function(productorder){ %>
 		<tr>
+			<td><%= productorder.doc_id %></td>
 			<td><%= productorder.name %></td>
 			<td><%= productorder.phone %></td>
 			<td><%= productorder.email %></td>
