@@ -539,9 +539,9 @@ const handlePostback = (sender_psid, received_postback) => {
     console.log("SELECTED PRODUCT IS: ", product_type);
     userInputs[user_id].product=product_type;
     console.log('TEST',userInputs);
-    // current_question='q3';
-    // botQuestions(current_question, sender_psid);
-     firstOrFollowup(sender_psid);
+    current_question='q3';
+    botQuestions(current_question, sender_psid);
+     //firstOrFollowup(sender_psid);
   }
   else{
       switch(payload) {        
@@ -694,23 +694,23 @@ const showProduct =(sender_psid) => {
 
 }
 
-const firstOrFollowup =(sender_psid) => {  
-  let response = {
-    "text": "Member or Customer?",
-    "quick_replies":[
-            {
-              "content_type":"text",
-              "title":"Member",
-              "payload":"visit:member",              
-            },{
-              "content_type":"text",
-              "title":"Customer",
-              "payload":"visit:customer",             
-            }
-    ]
-  };
-  callSend(sender_psid, response);
-}
+// const firstOrFollowup =(sender_psid) => {  
+//   let response = {
+//     "text": "Member or Customer?",
+//     "quick_replies":[
+//             {
+//               "content_type":"text",
+//               "title":"Member",
+//               "payload":"visit:member",              
+//             },{
+//               "content_type":"text",
+//               "title":"Customer",
+//               "payload":"visit:customer",             
+//             }
+//     ]
+//   };
+//   callSend(sender_psid, response);
+// }
 
 const botQuestions = (current_question,sender_psid) => {
   if(current_question =='q3'){
